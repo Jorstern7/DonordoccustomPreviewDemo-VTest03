@@ -1109,9 +1109,8 @@ function initFooterAccordion() {
     }
 
     document.addEventListener("mobilenav:open", () => {
-      root.classList.add("sticky-bar-hidden");
-      setStickyBarCssVar(0);
-      activeState = "hidden";
+      root.classList.remove("sticky-bar-hidden");
+      applyState("fixed");
     });
 
     document.addEventListener("mobilenav:close", () => {

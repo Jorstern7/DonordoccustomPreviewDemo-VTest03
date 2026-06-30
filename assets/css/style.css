@@ -187,9 +187,12 @@ footer {
 #header.mobile-nav-open nav.navbar-light .navbar-toggler {
   z-index: 10061;
 }
+#header.mobile-nav-open .offcanvas.offcanvas-end {
+  top: var(--sticky-bar-h, 0px);
+}
 #header nav.navbar-light .navbar-toggler {
   z-index: 2200;
-  background: linear-gradient(90deg, #35579b 0%, #3b5fa8 45%, #4a6fb8 100%);
+  background: linear-gradient(to right, #37b24d, #1ea99d);
   border: none;
   box-shadow: none;
   color: #fff;
@@ -401,6 +404,7 @@ footer {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+  min-height: 52px;
 }
 #header nav .offcanvas .btn-mobile-cta .btn-mobile-cta-label {
   display: inline-flex;
