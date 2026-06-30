@@ -43,6 +43,8 @@ function throttle(func, limit) {
   };
 }
 
+const STICKY_PIN_THRESHOLD = -40;
+
 document.addEventListener("DOMContentLoaded", function () {
   initStickyHeader();
   initNavScroll();
@@ -292,32 +294,26 @@ function initStickyHeader() {
   window.addEventListener("resize", updateHeroPadding);
   updateHeroPadding();
 
-  // Use throttled version for scroll performance
   const throttledUpdate = throttle(updateHeroPadding, 100);
 
-  const obs = new IntersectionObserver(
-    (entries) => {
-      const [entry] = entries;
-      if (!entry) return;
+  const syncHeaderSticky = () => {
+    const pinned = hero.getBoundingClientRect().top < STICKY_PIN_THRESHOLD;
 
-      header.classList.toggle("sticky", !entry.isIntersecting);
-      if (!entry.isIntersecting) {
-        header.style.background = "#fff";
-        header.style.boxShadow = "0 1px 2px 0 rgba(0, 0, 0, 0.05)";
-      } else {
-        header.style.background = "transparent";
-        header.style.boxShadow = "none";
-      }
-      if (!entry.isIntersecting) throttledUpdate();
-    },
-    {
-      root: null,
-      threshold: 0,
-      rootMargin: "-100px",
-    },
-  );
+    header.classList.toggle("sticky", pinned);
+    if (pinned) {
+      header.style.background = "#fff";
+      header.style.boxShadow = "0 1px 2px 0 rgba(0, 0, 0, 0.05)";
+      throttledUpdate();
+    } else {
+      header.style.background = "transparent";
+      header.style.boxShadow = "none";
+    }
+  };
 
-  obs.observe(hero);
+  const throttledSyncHeader = throttle(syncHeaderSticky, 50);
+  window.addEventListener("scroll", throttledSyncHeader, { passive: true });
+  window.addEventListener("resize", syncHeaderSticky);
+  syncHeaderSticky();
 }
 
 function initNavScroll() {
@@ -1049,14 +1045,14 @@ function initFooterAccordion() {
       let nearDockBottom =
         scrollBottom >= docEl.scrollHeight - DOCK_BOTTOM_ENTER_PX;
 
-      const belowDockBottomEscape =
-        scrollBottom < docEl.scrollHeight - DOCK_BOTTOM_EXIT_PX;
+      const exitPx = Math.max(DOCK_BOTTOM_EXIT_PX, bar.offsetHeight + 120);
+      const belowDockBottomEscape = scrollBottom < docEl.scrollHeight - exitPx;
 
       if (latchBottom) {
         if (belowDockBottomEscape) latchBottom = false;
       } else if (nearDockBottom) latchBottom = true;
 
-      const atHeroBand = heroRect.top >= -40;
+      const atHeroBand = heroRect.top >= STICKY_PIN_THRESHOLD;
 
       if (latchBottom) return "bottom";
       if (atHeroBand) return "top";
