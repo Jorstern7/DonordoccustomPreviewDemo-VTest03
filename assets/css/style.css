@@ -170,6 +170,7 @@ footer {
   width: 100%;
   background-color: #fff;
   box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.03);
+  animation: stickyDescend 0.35s ease both;
 }
 #header.sticky::before {
   content: "";
@@ -183,6 +184,8 @@ footer {
 }
 #header.mobile-nav-open {
   z-index: 10060;
+  animation: none;
+  transform: none;
 }
 #header.mobile-nav-open nav.navbar-light .navbar-toggler {
   z-index: 10061;
@@ -4751,6 +4754,20 @@ main .section-faq .faq-cta-btn:hover svg, main .section-faq .faq-cta-btn:active 
   padding-bottom: 16px;
 }
 
+@keyframes stickyDescend {
+  from {
+    transform: translateY(calc(-1 * (var(--sticky-bar-h, 0px) + var(--header-h, 80px))));
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #header.sticky,
+  #sticky-bar.sticky-bar-fixed {
+    animation: none;
+  }
+}
 #sticky-bar {
   background: #fff;
   transition: none;
@@ -4763,6 +4780,7 @@ main .section-faq .faq-cta-btn:hover svg, main .section-faq .faq-cta-btn:active 
   z-index: 10055;
   margin: 0;
   border-radius: 0;
+  animation: stickyDescend 0.35s ease both;
 }
 #sticky-bar.sticky-bar-docked-bottom {
   position: relative;
