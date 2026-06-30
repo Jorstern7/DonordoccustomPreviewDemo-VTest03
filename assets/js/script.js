@@ -282,9 +282,15 @@ function initStickyHeader() {
 
   const updateHeroPadding = () => {
     hero.style.paddingTop = `${header.offsetHeight}px`;
+    document.documentElement.style.setProperty(
+      "--header-h",
+      `${header.offsetHeight}px`,
+    );
   };
 
   window.addEventListener("load", updateHeroPadding);
+  window.addEventListener("resize", updateHeroPadding);
+  updateHeroPadding();
 
   // Use throttled version for scroll performance
   const throttledUpdate = throttle(updateHeroPadding, 100);

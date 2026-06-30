@@ -62,7 +62,7 @@ body.loading {
 section,
 header,
 footer {
-  scroll-margin-top: 50px;
+  scroll-margin-top: calc(var(--sticky-bar-h, 0px) + var(--header-h, 80px) + 16px);
 }
 
 .stroke-primary {
