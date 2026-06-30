@@ -189,7 +189,7 @@ footer {
 }
 #header nav.navbar-light .navbar-toggler {
   z-index: 2200;
-  background: linear-gradient(to right, #37b24d, #1ea99d);
+  background: linear-gradient(90deg, #35579b 0%, #3b5fa8 45%, #4a6fb8 100%);
   border: none;
   box-shadow: none;
   color: #fff;
@@ -4807,11 +4807,11 @@ main .section-faq .faq-cta-btn:hover svg, main .section-faq .faq-cta-btn:active 
   width: 44px;
   height: 44px;
   border-radius: 10px;
-  background: #ebf7ed;
+  background: #f3f4f6;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #37b24d;
+  color: #3b5fa8;
 }
 .sticky-bar-icon svg {
   stroke: currentColor;
@@ -4850,7 +4850,7 @@ main .section-faq .faq-cta-btn:hover svg, main .section-faq .faq-cta-btn:active 
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: #fff;
-  background: linear-gradient(to right, #37b24d, #1ea99d);
+  background: linear-gradient(90deg, #35579b 0%, #3b5fa8 45%, #4a6fb8 100%);
   padding: 5px 11px;
   border-radius: 999px;
 }
@@ -4892,7 +4892,7 @@ main .section-faq .faq-cta-btn:hover svg, main .section-faq .faq-cta-btn:active 
 .sticky-bar-price {
   font-size: 26px;
   font-weight: 800;
-  color: #37b24d;
+  color: #3b5fa8;
   letter-spacing: -0.02em;
 }
 .sticky-bar-price small {
@@ -4934,10 +4934,35 @@ main .section-faq .faq-cta-btn:hover svg, main .section-faq .faq-cta-btn:active 
   flex-shrink: 0;
 }
 .sticky-bar-perk svg circle {
-  stroke: rgba(55, 178, 77, 0.35);
+  stroke: rgba(59, 95, 168, 0.35);
 }
 .sticky-bar-perk svg path {
-  stroke: #37b24d !important;
+  stroke: #3b5fa8 !important;
+}
+
+.sticky-bar-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex: 0 0 auto;
+}
+
+.sticky-bar-secure {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin: 0;
+  font-size: 12px;
+  font-weight: 400;
+  color: #9ca3af;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+.sticky-bar-secure svg.sticky-bar-secure-icon {
+  flex-shrink: 0;
+  stroke: #9ca3af;
 }
 
 .sticky-bar-btn {
@@ -4952,8 +4977,8 @@ main .section-faq .faq-cta-btn:hover svg, main .section-faq .faq-cta-btn:active 
   font-weight: 700;
   color: #fff;
   text-decoration: none;
-  background: linear-gradient(to right, #37b24d, #1ea99d);
-  box-shadow: 0 4px 14px rgba(55, 178, 77, 0.35);
+  background: linear-gradient(90deg, #35579b 0%, #3b5fa8 45%, #4a6fb8 100%);
+  box-shadow: 0 4px 14px rgba(53, 87, 155, 0.35);
   border: none;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
   white-space: nowrap;
@@ -4965,9 +4990,9 @@ main .section-faq .faq-cta-btn:hover svg, main .section-faq .faq-cta-btn:active 
 }
 .sticky-bar-btn:hover, .sticky-bar-btn:active {
   color: #fff;
-  background: linear-gradient(to right, #2e9a43, #178f86);
+  background: linear-gradient(90deg, #2d4a87 0%, #345494 45%, #3f5fa3 100%);
   transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(55, 178, 77, 0.45);
+  box-shadow: 0 6px 18px rgba(53, 87, 155, 0.45);
 }
 .sticky-bar-btn:hover svg.sticky-bar-btn-arrow, .sticky-bar-btn:active svg.sticky-bar-btn-arrow {
   transform: translateX(4px);
@@ -5005,8 +5030,15 @@ main .section-faq .faq-cta-btn:hover svg, main .section-faq .faq-cta-btn:active 
     align-items: center;
     flex-wrap: wrap;
   }
+  .sticky-bar-cta {
+    width: 100%;
+  }
   .sticky-bar-btn {
     width: 100%;
+  }
+  .sticky-bar-secure {
+    white-space: normal;
+    text-align: center;
   }
 }
 @media (max-width: 575.98px) {
